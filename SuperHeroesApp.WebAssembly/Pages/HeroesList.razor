@@ -1,0 +1,61 @@
+﻿@page "/super-heroes"
+@page "/"
+@inject NavigationManager NavigationManager
+
+<SuperHeroesList Items="@_heroesList">
+    <AddHeroItem>
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow" style="height: 19rem;">
+                <div class="card-body">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" @onclick="@NavigateToCreateHeroComponent">
+                        <span class="oi oi-plus" aria-hidden="true"></span>
+                        Create hero
+                    </button>
+                </div>
+            </div>
+        </div>
+    </AddHeroItem>
+</SuperHeroesList>
+
+@code{
+    private List<SuperHeroModel> _heroesList = new List<SuperHeroModel>
+    {
+        new SuperHeroModel
+        {
+            Id = 1,
+            Name = "Natasha Romanoff",
+            Character = "BLACK WIDOW",
+            Universe = UniverseType.Marvel,
+            Description = "Trusted by some and feared by most, the Black Widow strives to make up for the bad she had done in the past by helping the world, even if that means getting her hands dirty in the process."
+        },
+        new SuperHeroModel
+        {
+            Id = 2,
+            Name = "Carol Danvers",
+            Character = "CAPTAIN MARVEL",
+            Universe = UniverseType.Marvel,
+            Description = "Near death, Carol Danvers was transformed into a powerful warrior for the Kree. Now, returning to Earth years later, she must remember her past in order to to prevent a full invasion by shapeshifting aliens, the Skrulls."
+        },
+        new SuperHeroModel
+        {
+            Id = 3,
+            Name = "Peter Parker",
+            Character = "SPIDER-MAN",
+            Universe = UniverseType.Marvel,
+            Description = "With amazing spider-like abilities, teenage science whiz Peter Parker fights crime and dreams of becoming an Avenger as Spider-Man."
+        },
+        new SuperHeroModel
+        {
+            Id = 4,
+            Name = "Tony Stark",
+            Character = "IRON MAN",
+            Universe = UniverseType.Marvel,
+            Description = "Inventor Tony Stark applies his genius for high-tech solutions to problems as Iron Man, the armored Avenger."
+        }
+    };
+
+    private void NavigateToCreateHeroComponent()
+    {
+        NavigationManager.NavigateTo("super-heroes/create");
+    }
+}

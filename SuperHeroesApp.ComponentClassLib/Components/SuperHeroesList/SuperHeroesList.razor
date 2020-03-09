@@ -1,0 +1,9 @@
+﻿<div class="container">
+    <div class="row">
+        @foreach (var hero in Items)
+        {
+            <SuperHeroDetails Hero="@hero"></SuperHeroDetails>
+        }
+        @AddHeroItem
+    </div>
+</div>

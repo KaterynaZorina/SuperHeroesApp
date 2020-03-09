@@ -1,0 +1,15 @@
+﻿<div class="col-md-4">
+    <div class="card mb-4 box-shadow" style="height:19rem;">
+        <div class="card-body">
+            <p class="card-text">@Hero.Character</p>
+            <p class="card-text">@Hero.Name</p>
+            <p class="card-text">@Hero.Description</p>
+            <p class="card-text">From @Hero.Universe universe</p>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public SuperHeroModel Hero { get; set; }
+}

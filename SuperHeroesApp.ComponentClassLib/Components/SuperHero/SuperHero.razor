@@ -1,0 +1,47 @@
+﻿<EditForm Model="@_heroModel" OnValidSubmit="AddHero">
+    <DataAnnotationsValidator/>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">Character</div>
+            <div class="col-sm">
+                <InputText @bind-Value="@_heroModel.Character"></InputText>
+                <ValidationMessage For="@(() => _heroModel.Character)"></ValidationMessage>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">Name</div>
+            <div class="col-sm">
+                <InputText @bind-Value="@_heroModel.Name"></InputText>
+                <ValidationMessage For="@(() => _heroModel.Name)"></ValidationMessage>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">Description</div>
+            <div class="col-sm">
+                <InputTextArea @bind-Value="@_heroModel.Description"></InputTextArea>
+                <ValidationMessage For="@(() => _heroModel.Description)"></ValidationMessage>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">Universe</div>
+            <div class="col-sm">
+                <InputSelect @bind-Value="_heroModel.Universe">
+                    <option value="">Select universe</option>
+                    <option value="@UniverseType.Marvel">Marvel</option>
+                    <option value="@UniverseType.DC">DC</option>
+                </InputSelect>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    private SuperHeroModel _heroModel = new SuperHeroModel();
+
+    private async Task AddHero()
+    {
+        // TODO: Add implementation
+        Console.WriteLine(_heroModel);
+    }
+}
