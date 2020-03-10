@@ -1,39 +1,45 @@
 ﻿<EditForm Model="@_heroModel" OnValidSubmit="AddHero">
     <DataAnnotationsValidator/>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">Character</div>
-            <div class="col-sm">
-                <InputText @bind-Value="@_heroModel.Character"></InputText>
-                <ValidationMessage For="@(() => _heroModel.Character)"></ValidationMessage>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm">Name</div>
-            <div class="col-sm">
-                <InputText @bind-Value="@_heroModel.Name"></InputText>
-                <ValidationMessage For="@(() => _heroModel.Name)"></ValidationMessage>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm">Description</div>
-            <div class="col-sm">
-                <InputTextArea @bind-Value="@_heroModel.Description"></InputTextArea>
-                <ValidationMessage For="@(() => _heroModel.Description)"></ValidationMessage>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm">Universe</div>
-            <div class="col-sm">
-                <InputSelect @bind-Value="_heroModel.Universe">
-                    <option value="">Select universe</option>
-                    <option value="@UniverseType.Marvel">Marvel</option>
-                    <option value="@UniverseType.DC">DC</option>
-                </InputSelect>
-            </div>
+
+    <div class="form-group row">
+        <h3 class="col-sm-6">Create new hero</h3>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Character</label>
+        <div class="col-sm-6">
+            <InputText @bind-Value="@_heroModel.Character" class="form-control" placeholder="Character"></InputText>
+            <ValidationMessage For="@(() => _heroModel.Character)"></ValidationMessage>
         </div>
     </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-6">
+            <InputText @bind-Value="@_heroModel.Name" class="form-control" placeholder="Name"></InputText>
+            <ValidationMessage For="@(() => _heroModel.Name)"></ValidationMessage>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-6">
+            <InputTextArea @bind-Value="@_heroModel.Description" class="form-control" placeholder="Description"></InputTextArea>
+            <ValidationMessage For="@(() => _heroModel.Description)"></ValidationMessage>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Universe</label>
+        <div class="col-sm-6">
+            <InputSelect @bind-Value="_heroModel.Universe" class="form-control">
+                <option value="" selected>Select universe</option>
+                <option value="@UniverseType.Marvel">Marvel</option>
+                <option value="@UniverseType.DC">DC</option>
+            </InputSelect>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-sm btn-outline-secondary">Create</button>
+        </div>
+      </div>
 </EditForm>
 
 @code {
@@ -41,7 +47,7 @@
 
     private async Task AddHero()
     {
-        // TODO: Add implementation
+    // TODO: Add implementation
         Console.WriteLine(_heroModel);
     }
 }
