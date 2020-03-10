@@ -1,3 +1,13 @@
 ﻿@page "/super-heroes/create"
+@inject ISuperHeroesService SuperHeroesService
+@inject NavigationManager NavigationManager
 
-<SuperHero></SuperHero>
+<SuperHero OnSuperHeroAdded="AddHero"></SuperHero>
+
+@code {
+    private async Task AddHero(SuperHeroModel model)
+    {
+        await SuperHeroesService.AddSuperHeroAsync(model);
+        NavigationManager.NavigateTo("super-heroes");
+    }
+}

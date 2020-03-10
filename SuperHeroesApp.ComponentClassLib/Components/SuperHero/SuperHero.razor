@@ -43,11 +43,13 @@
 </EditForm>
 
 @code {
+    [Parameter]
+    public EventCallback<SuperHeroModel> OnSuperHeroAdded { get; set; }
+
     private SuperHeroModel _heroModel = new SuperHeroModel();
 
     private async Task AddHero()
     {
-    // TODO: Add implementation
-        Console.WriteLine(_heroModel);
+        await OnSuperHeroAdded.InvokeAsync(_heroModel);
     }
 }
