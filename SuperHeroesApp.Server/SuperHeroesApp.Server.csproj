@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="SuperHeroesApp.ComponentClassLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\SuperHeroesApp.ComponentClassLib\bin\Debug\netstandard2.0\SuperHeroesApp.ComponentClassLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

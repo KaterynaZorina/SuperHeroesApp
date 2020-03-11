@@ -1,0 +1,36 @@
+﻿@page "/super-heroes"
+@page "/"
+@inject NavigationManager NavigationManager
+@inject ISuperHeroesService SuperHeroesService
+
+<SuperHeroesList Items="@_heroesList">
+    <AddHeroItem>
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow" style="height: 19rem;">
+                <div class="card-body">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" @onclick="@NavigateToCreateHeroComponent">
+                        <span class="oi oi-plus" aria-hidden="true"></span>
+                        Create hero
+                    </button>
+                </div>
+            </div>
+        </div>
+    </AddHeroItem>
+</SuperHeroesList>
+
+@code{
+    private List<SuperHeroModel> _heroesList;
+
+    private void NavigateToCreateHeroComponent()
+    {
+        NavigationManager.NavigateTo("super-heroes/create");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        _heroesList = await SuperHeroesService.GetSuperHeroesAsync();
+    }
+
+}
