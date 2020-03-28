@@ -1,9 +1,25 @@
-﻿<div class="container">
+﻿@typeparam TItem
+
+<div class="container">
     <div class="row">
         @foreach (var hero in Items)
         {
-            <SuperHeroDetails Hero="@hero"></SuperHeroDetails>
+            @HeroItemContent(hero)
+            <SuperHeroesListItem Hero="@hero">
+                
+            </SuperHeroesListItem>
         }
-        @AddHeroItem
+        @AddHeroItemContent
     </div>
 </div>
+
+@code{
+    [Parameter]
+    public List<TItem> Items { get; set; }
+        
+    [Parameter]
+    public RenderFragment AddHeroItemContent { get; set; }
+        
+    [Parameter]
+    public RenderFragment<TItem> HeroItemContent { get; set; }
+}

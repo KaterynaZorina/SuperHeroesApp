@@ -1,0 +1,56 @@
+﻿@page "/login"
+@using Microsoft.AspNetCore.Authorization
+@using SuperHeroesApp.WebAssembly.Data
+@using SuperHeroesApp.WebAssembly.Data.Models.Login
+@inject IAuthService AuthService;
+@inject NavigationManager NavigationManager;
+
+<EditForm Model="@_loginInput" OnValidSubmit="LoginAndNavigate">
+    <DataAnnotationsValidator/>
+
+    <div class="form-group row">
+        <h3 class="col-sm-6">Create new hero</h3>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-6">
+            <InputText @bind-Value="@_loginInput.Email" class="form-control" placeholder="Email"></InputText>
+            <ValidationMessage For="@(() => _loginInput.Email)"></ValidationMessage>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-6">
+            <InputText @bind-Value="@_loginInput.Password" class="form-control" placeholder="Password"></InputText>
+            <ValidationMessage For="@(() => _loginInput.Password)"></ValidationMessage>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-sm btn-outline-secondary">Login</button>
+        </div>
+      </div>
+</EditForm>
+
+@if (!string.IsNullOrWhiteSpace(ErrorMessage))
+{
+    <p>@ErrorMessage</p>
+}
+
+@code
+{
+    private LoginInput _loginInput = new LoginInput();
+    private string ErrorMessage;
+
+    private async Task LoginAndNavigate()
+    {
+        var loginResult = await AuthService.LoginAsync(_loginInput);
+
+        if (!loginResult.IsSuccessful)
+        {
+            ErrorMessage = loginResult.ErrorMessage;
+        }
+        
+        NavigationManager.NavigateTo("/");
+    }
+}

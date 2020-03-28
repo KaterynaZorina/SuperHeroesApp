@@ -20,4 +20,14 @@
       <HintPath>bin\Debug\netstandard2.0\SuperHeroesApp.ComponentClassLib.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Components\SuperHeroesList\SuperHeroesList.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\Shared" />
+  </ItemGroup>
 </Project>

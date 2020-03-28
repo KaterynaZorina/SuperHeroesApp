@@ -1,0 +1,31 @@
+﻿@page "/super-heroes/{heroId:int}"
+@inject ISuperHeroesService SuperHeroesService; 
+
+@if (_hero == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <SuperHeroDetails Hero="@_hero"></SuperHeroDetails>
+}
+@{
+    const string backStr = "<< Back";
+}
+<div>
+    <NavLink Match="NavLinkMatch.All" href="/super-heroes">@backStr</NavLink>
+</div>
+
+@code{
+    [Parameter]
+    public int HeroId { get; set; }
+
+    private SuperHeroModel _hero;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var hero = await SuperHeroesService.GetSuperHero(HeroId);
+
+        _hero = hero;
+    }
+}

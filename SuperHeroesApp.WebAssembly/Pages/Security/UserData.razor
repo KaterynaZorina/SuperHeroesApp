@@ -1,0 +1,9 @@
+﻿<AuthorizeView>
+    <Authorized>
+        <NavLink Match="NavLinkMatch.All" href="/logout">Log out</NavLink>
+    </Authorized>
+    <NotAuthorized>
+        <NavLink Match="NavLinkMatch.All" href="/login">Log in</NavLink>
+        <NavLink Match="NavLinkMatch.All" href="/register">Sign up</NavLink>
+    </NotAuthorized>
+</AuthorizeView>

@@ -1,12 +1,27 @@
 ﻿@page "/super-heroes"
 @page "/"
+@using Microsoft.AspNetCore.Authorization
 @inject NavigationManager NavigationManager
 @inject ISuperHeroesService SuperHeroesService
+@attribute [Authorize]
 
 <SuperHeroesList Items="@_heroesList">
-    <AddHeroItem>
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow" style="height: 19rem;">
+    <HeroItemContent>
+            <div class="col-md-3">
+                <div class="card mb-4 box-shadow" style="height:7rem;">
+                    <div class="card-body">
+                        <p class="card-text">@context.Character</p>
+                        @{
+                            var linkToHeroDetails = $"/super-heroes/{context.Id}";
+                        }
+                        <NavLink Match="NavLinkMatch.All" href="@linkToHeroDetails">See more...</NavLink>
+                    </div>
+                </div>
+            </div>
+    </HeroItemContent>
+    <AddHeroItemContent>
+        <div class="col-md-3">
+            <div class="card mb-4 box-shadow" style="height: 7rem;">
                 <div class="card-body">
                     <button type="button" class="btn btn-sm btn-outline-secondary" @onclick="@NavigateToCreateHeroComponent">
                         <span class="oi oi-plus" aria-hidden="true"></span>
@@ -15,7 +30,7 @@
                 </div>
             </div>
         </div>
-    </AddHeroItem>
+    </AddHeroItemContent>
 </SuperHeroesList>
 
 @code{
@@ -32,5 +47,4 @@
 
         _heroesList = await SuperHeroesService.GetSuperHeroesAsync();
     }
-
 }

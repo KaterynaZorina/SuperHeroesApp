@@ -9,5 +9,7 @@ namespace SuperHeroesApp.ComponentClassLib.Services
         Task<List<SuperHeroModel>> GetSuperHeroesAsync();
 
         Task AddSuperHeroAsync(SuperHeroModel model);
+
+        Task<SuperHeroModel> GetSuperHero(int id);
     }
 }

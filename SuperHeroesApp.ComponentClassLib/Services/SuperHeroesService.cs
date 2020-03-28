@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using SuperHeroesApp.ComponentClassLib.Models;
 
@@ -58,5 +59,14 @@ namespace SuperHeroesApp.ComponentClassLib.Services
             
             return Task.CompletedTask;
         }
+
+        public Task<SuperHeroModel> GetSuperHero(int id)
+        {
+            var superHero = _superHeroesList.FirstOrDefault(h => h.Id == id);
+
+            return Task.FromResult(superHero);
+        }
     }
 }
+
+// All materials were taken from https://www.marvel.com/

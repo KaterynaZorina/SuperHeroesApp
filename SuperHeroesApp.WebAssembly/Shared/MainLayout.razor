@@ -1,7 +1,11 @@
 ﻿@inherits LayoutComponentBase
 
+<UserData></UserData>
+
 <div class="main">
     <div class="content px-4">
-        @Body
+        <AuthorizeView>
+            @Body
+        </AuthorizeView>
     </div>
 </div>
