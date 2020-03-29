@@ -19,7 +19,7 @@ namespace SuperHeroesApp.WebAssembly.Data.Models.Register
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "ConfirmPassword and Password should match")]
+        [Compare("Password", ErrorMessage = "Confirm Password and Password should match")]
         public string ConfirmPassword { get; set; }
     }
 }

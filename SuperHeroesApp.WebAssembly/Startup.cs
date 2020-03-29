@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +12,10 @@ namespace SuperHeroesApp.WebAssembly
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthorizationCore();
+            services.AddAuthorizationCore(options =>
+            {
+                options.AddPolicy("DemoPolicy", policy => policy.RequireClaim("TestUser", "true"));
+            });
             services.AddSingleton<ISuperHeroesService, SuperHeroesService>();
             services.AddSingleton<IAuthService, LocalStorageAuthorizationService>();
             services.AddScoped<ILocalStorageService, LocalStorageService>();

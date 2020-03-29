@@ -9,39 +9,39 @@
     <DataAnnotationsValidator/>
 
     <div class="form-group row">
-        <h3 class="col-sm-6">Create new hero</h3>
+        <h3 class="col-sm-5">Create account</h3>
     </div>
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-5">
             <InputText @bind-Value="@_registerInput.Email" class="form-control" placeholder="Email"></InputText>
             <ValidationMessage For="@(() => _registerInput.Email)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Name</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-5">
             <InputText @bind-Value="@_registerInput.Name" class="form-control" placeholder="Name"></InputText>
             <ValidationMessage For="@(() => _registerInput.Name)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-6">
-            <InputText @bind-Value="@_registerInput.Password" class="form-control" placeholder="Password"></InputText>
+        <label class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-5">
+            <InputText @bind-Value="@_registerInput.Password"  type="password" class="form-control" placeholder="Password"></InputText>
             <ValidationMessage For="@(() => _registerInput.Password)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">ConfirmPassword</label>
-        <div class="col-sm-6">
-            <InputText @bind-Value="@_registerInput.ConfirmPassword" class="form-control" placeholder="ConfirmPassword"></InputText>
+        <label class="col-sm-3 col-form-label">Confirm Password</label>
+        <div class="col-sm-5">
+            <InputText @bind-Value="@_registerInput.ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password"></InputText>
             <ValidationMessage For="@(() => _registerInput.ConfirmPassword)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group row">
         <div class="col-sm-6">
-          <button type="submit" class="btn btn-sm btn-outline-secondary">Login</button>
+          <button type="submit" class="btn btn-sm btn-outline-secondary">Sign up</button>
         </div>
       </div>
 </EditForm>
@@ -58,6 +58,7 @@
         if (!result.IsSuccessful)
         {
             Errors = result.ErrorMessages;
+            return;
         }
         
         NavigationManager.NavigateTo("/login");

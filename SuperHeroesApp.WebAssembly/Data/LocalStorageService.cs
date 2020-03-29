@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 using SuperHeroesApp.WebAssembly.Data.Models;
@@ -43,9 +44,11 @@ namespace SuperHeroesApp.WebAssembly.Data
             if (string.IsNullOrWhiteSpace(userInfoStr))
                 return null;
 
+            Console.WriteLine($"User data string is: {userInfoStr}");
+            
             var userData = JsonSerializer.Deserialize<UserData>(userInfoStr);
 
-            return new UserInfo {Name = userData.UserName};
+            return new UserInfo {Email = userData.Email};
         }
     }
 }

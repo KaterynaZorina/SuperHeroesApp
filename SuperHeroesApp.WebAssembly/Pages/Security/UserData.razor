@@ -1,4 +1,6 @@
-﻿<AuthorizeView>
+﻿@using System.Text.Json
+@using System.Text.Json.Serialization
+<AuthorizeView Policy="DemoPolicy">
     <Authorized>
         <NavLink Match="NavLinkMatch.All" href="/logout">Log out</NavLink>
     </Authorized>
@@ -7,3 +9,26 @@
         <NavLink Match="NavLinkMatch.All" href="/register">Sign up</NavLink>
     </NotAuthorized>
 </AuthorizeView>
+
+@code{
+
+    [CascadingParameter] private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await authenticationStateTask;
+        var user = authState.User;
+
+        Console.WriteLine($"User identity: {JsonSerializer.Serialize(user, new JsonSerializerOptions{ ReferenceHandling = ReferenceHandling.Preserve})}");
+        
+        if (user.Identity.IsAuthenticated)
+        {
+            Console.WriteLine($"User {user.Identity.Name} is authenticated.");
+        }
+        else
+        {
+            Console.WriteLine("User is NOT authenticated.");
+        }
+    }
+
+}
