@@ -5,6 +5,12 @@
 @attribute [Authorize("DemoPolicy")]
 
 <CreateSuperHero OnSuperHeroAdded="AddHero"></CreateSuperHero>
+@{
+    const string backStr = "<< Back";
+}
+<div>
+    <NavLink Match="NavLinkMatch.All" href="/super-heroes">@backStr</NavLink>
+</div>
 
 @code {
     private async Task AddHero(SuperHeroModel model)
