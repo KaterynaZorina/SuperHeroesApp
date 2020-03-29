@@ -97,7 +97,7 @@ namespace SuperHeroesApp.WebAssembly.Data
             if (result)
             {
                 ((LocalStorageAuthenticationStateProvider) _authenticationStateProvider)
-                    .NotifyAuthenticationStateChanged(userInfo.Email);
+                    .NotifyAuthStateChanged(userInfo.Email);
             }
             
             return result
@@ -110,7 +110,7 @@ namespace SuperHeroesApp.WebAssembly.Data
             await _localStorageService.ClearUserInfo();
             
             ((LocalStorageAuthenticationStateProvider) _authenticationStateProvider)
-                .NotifyAuthenticationStateChanged();
+                .NotifyAuthStateChanged();
         }
     }
 }

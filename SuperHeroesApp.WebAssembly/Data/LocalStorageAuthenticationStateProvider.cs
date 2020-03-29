@@ -20,6 +20,7 @@ namespace SuperHeroesApp.WebAssembly.Data
         {
             var userData = await _localStorageService.GetUserInfo();
 
+            Console.WriteLine("Auth state was changed!!!");
             Console.WriteLine($"User data: {JsonSerializer.Serialize(userData)}");
             
             if (userData == null)
@@ -35,7 +36,7 @@ namespace SuperHeroesApp.WebAssembly.Data
             return authResult;
         }
 
-        public void NotifyAuthenticationStateChanged(string email = null)
+        public void NotifyAuthStateChanged(string email = null)
         {
             ClaimsPrincipal authenticatedUser;
 

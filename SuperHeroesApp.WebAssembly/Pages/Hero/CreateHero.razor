@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Authorization
 @inject ISuperHeroesService SuperHeroesService
 @inject NavigationManager NavigationManager
+@attribute [Authorize("DemoPolicy")]
 
 <CreateSuperHero OnSuperHeroAdded="AddHero"></CreateSuperHero>
 

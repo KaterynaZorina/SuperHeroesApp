@@ -3,6 +3,7 @@
 @using Microsoft.AspNetCore.Authorization
 @inject NavigationManager NavigationManager
 @inject ISuperHeroesService SuperHeroesService
+@attribute [Authorize("DemoPolicy")]
 
 <SuperHeroesList Items="@_heroesList">
     <HeroItemContent>

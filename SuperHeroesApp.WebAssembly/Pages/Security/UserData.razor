@@ -1,34 +1,13 @@
-﻿@using System.Text.Json
-@using System.Text.Json.Serialization
-<AuthorizeView Policy="DemoPolicy">
-    <Authorized>
-        <NavLink Match="NavLinkMatch.All" href="/logout">Log out</NavLink>
-    </Authorized>
-    <NotAuthorized>
-        <NavLink Match="NavLinkMatch.All" href="/login">Log in</NavLink>
-        <NavLink Match="NavLinkMatch.All" href="/register">Sign up</NavLink>
-    </NotAuthorized>
-</AuthorizeView>
-
-@code{
-
-    [CascadingParameter] private Task<AuthenticationState> authenticationStateTask { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        var authState = await authenticationStateTask;
-        var user = authState.User;
-
-        Console.WriteLine($"User identity: {JsonSerializer.Serialize(user, new JsonSerializerOptions{ ReferenceHandling = ReferenceHandling.Preserve})}");
-        
-        if (user.Identity.IsAuthenticated)
-        {
-            Console.WriteLine($"User {user.Identity.Name} is authenticated.");
-        }
-        else
-        {
-            Console.WriteLine("User is NOT authenticated.");
-        }
-    }
-
-}
+﻿<div class="navbar navbar-dark bg-dark box-shadow">
+    <div class="container d-flex justify-content-between">
+        <AuthorizeView Policy="DemoPolicy">
+            <Authorized>
+                <NavLink class="navbar-brand d-flex align-items-center" Match="NavLinkMatch.All" href="/logout">Log out</NavLink>
+            </Authorized>
+            <NotAuthorized>
+                <NavLink class="navbar-brand d-flex align-items-center" Match="NavLinkMatch.All" href="/login">Log in</NavLink>
+                <NavLink class="navbar-brand d-flex align-items-center" Match="NavLinkMatch.All" href="/sign-up">Sign up</NavLink>
+            </NotAuthorized>
+        </AuthorizeView>
+    </div>
+</div>

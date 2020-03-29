@@ -1,5 +1,7 @@
 ﻿@page "/super-heroes/{heroId:int}"
+@using Microsoft.AspNetCore.Authorization
 @inject ISuperHeroesService SuperHeroesService; 
+@attribute [Authorize("DemoPolicy")]
 
 @if (_hero == null)
 {
