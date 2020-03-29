@@ -2,6 +2,7 @@
     <div class="container d-flex justify-content-between">
         <AuthorizeView Policy="DemoPolicy">
             <Authorized>
+                <NavLink class="navbar-brand d-flex align-items-center" Match="NavLinkMatch.All" href="/super-heroes">Heroes list</NavLink>
                 <NavLink class="navbar-brand d-flex align-items-center" Match="NavLinkMatch.All" href="/logout">Log out</NavLink>
             </Authorized>
             <NotAuthorized>

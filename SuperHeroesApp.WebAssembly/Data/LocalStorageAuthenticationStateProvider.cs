@@ -52,6 +52,8 @@ namespace SuperHeroesApp.WebAssembly.Data
             var authState = Task.FromResult(new AuthenticationState(authenticatedUser));
             
             NotifyAuthenticationStateChanged(authState);
+            
+            Console.WriteLine("NotifyAuthenticationStateChanged was called");
         }
         
         private static Claim[] GetAuthorizedUserClaim(string email)

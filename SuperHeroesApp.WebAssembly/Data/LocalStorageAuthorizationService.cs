@@ -94,10 +94,16 @@ namespace SuperHeroesApp.WebAssembly.Data
             
             var result = await _localStorageService.StoreUserInfo(userInfo);
 
+            Console.WriteLine($"LoginAsync StoreUserInfo was called and result is: {result}");
+            
             if (result)
             {
-                ((LocalStorageAuthenticationStateProvider) _authenticationStateProvider)
-                    .NotifyAuthStateChanged(userInfo.Email);
+                if (_authenticationStateProvider is LocalStorageAuthenticationStateProvider authProvider)
+                {
+                    Console.WriteLine($"Notify auth state changed with userInfo.Email: {userInfo.Email}");
+                    
+                    authProvider.NotifyAuthStateChanged(userInfo.Email);
+                }
             }
             
             return result
@@ -109,8 +115,12 @@ namespace SuperHeroesApp.WebAssembly.Data
         {
             await _localStorageService.ClearUserInfo();
             
-            ((LocalStorageAuthenticationStateProvider) _authenticationStateProvider)
-                .NotifyAuthStateChanged();
+            if (_authenticationStateProvider is LocalStorageAuthenticationStateProvider authProvider)
+            {
+                authProvider.NotifyAuthStateChanged();
+                
+                Console.WriteLine("NotifyAuthStateChanged was called");
+            }
         }
     }
 }
