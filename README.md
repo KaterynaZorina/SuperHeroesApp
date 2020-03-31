@@ -7,4 +7,4 @@ This repository contains next projects:
 2. `SuperHeroesApp.Server` - Blazor Server (server-side) project.
 3. `SuperHeroesApp.WebAssembly` - Blazor WebAssembly (client-side) project.
 
-
+Live demo: https://katerynazorina.github.io/login
