@@ -1,10 +1,8 @@
 ﻿@page "/super-heroes/create"
-@using SuperHeroesApp.ComponentClassLib.Models
-@using SuperHeroesApp.ComponentClassLib.Services
 @inject ISuperHeroesService SuperHeroesService
 @inject NavigationManager NavigationManager
 
-<SuperHero OnSuperHeroAdded="AddHero"></SuperHero>
+<CreateSuperHero OnSuperHeroAdded="AddHero"></CreateSuperHero>
 
 @code {
     private async Task AddHero(SuperHeroModel model)

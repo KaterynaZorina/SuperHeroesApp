@@ -19,8 +19,8 @@ namespace SuperHeroesApp.WebAssembly
             services.AddSingleton<ISuperHeroesService, SuperHeroesService>();
             services.AddSingleton<IAuthService, LocalStorageAuthorizationService>();
             services.AddScoped<ILocalStorageService, LocalStorageService>();
-            services.AddScoped<LocalStorageAuthenticationStateProvider>();
-            services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<LocalStorageAuthenticationStateProvider>());
+            services.AddSingleton<LocalStorageAuthenticationStateProvider>();
+            services.AddSingleton<AuthenticationStateProvider>(provider => provider.GetRequiredService<LocalStorageAuthenticationStateProvider>());
         }
 
         public void Configure(IComponentsApplicationBuilder app)
